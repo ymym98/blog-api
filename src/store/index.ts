@@ -24,6 +24,14 @@ export default new Vuex.Store({
       // mutationsを呼び、引数にpayloadを渡す
       context.commit("addPostsList", payload);
     },
+
+    // async getPhotos(context) {
+    //   const response = await axios.get(
+    //     "https://jsonplaceholder.typicode.com/photos"
+    //   );
+    //   const payload = response.data;
+    //   context.commit("addPhotos", payload);
+    // },
   },
   mutations: {
     /**
@@ -40,6 +48,8 @@ export default new Vuex.Store({
         );
       }
     },
+
+    // addPhotos(state, payload) {},
   },
   modules: {},
   getters: {

@@ -1,3 +1,6 @@
+/**
+ * Postの部品用クラス.
+ */
 export class Posts {
   constructor(
     // ユーザーID
