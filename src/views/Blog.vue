@@ -1,5 +1,8 @@
 <template>
   <div class="space-y-10">
+    <!-- <div v-for="photo of photoList" v-bind:key="photo.id">
+      <img v-bind:src="photo.url" />
+    </div> -->
     <div
       v-for="post of postsList"
       v-bind:key="post.id"
@@ -16,6 +19,7 @@
 </template>
 
 <script lang="ts">
+import { Photos } from "@/types/Photos";
 import { Posts } from "@/types/Posts";
 import { Component, Vue } from "vue-property-decorator";
 
@@ -23,6 +27,8 @@ import { Component, Vue } from "vue-property-decorator";
 export default class Blog extends Vue {
   // postsの一覧を格納する配列
   private postsList = new Array<Posts>();
+  // photosを格納する配列
+  private photoList = new Array<Photos>();
 
   /**
    * vuexのaction経由で非同期でAPIを取得する.
@@ -36,6 +42,9 @@ export default class Blog extends Vue {
     await this["$store"].dispatch("getPostsList");
     // postListにPostsの一覧情報を格納
     this.postsList = this["$store"].getters.getPosts;
+    // photoLisrにPhotosの一覧情報を格納
+    await this["$store"].dispatch("getPhotos");
+    this.photoList = this.$store.getters.getPhotos;
   }
 }
 </script>
