@@ -1,3 +1,6 @@
+/**
+ * Commentの部品用クラス.
+ */
 export class Comment {
   constructor(
     // ポストID
